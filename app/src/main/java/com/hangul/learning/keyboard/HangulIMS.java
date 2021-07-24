@@ -1,9 +1,10 @@
-package com.example.android.softkeyboard;
+package com.hangul.learning.keyboard;
 
 import android.inputmethodservice.InputMethodService;
 import android.inputmethodservice.Keyboard;
 import android.inputmethodservice.KeyboardView;
 import android.text.method.MetaKeyKeyListener;
+import android.util.Log;
 import android.view.KeyCharacterMap;
 import android.view.KeyEvent;
 import android.view.View;
@@ -14,8 +15,11 @@ import android.view.inputmethod.InputConnection;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SoftKeyboard extends InputMethodService
+public class HangulIMS extends InputMethodService
         implements KeyboardView.OnKeyboardActionListener {
+
+    private static final String TAG = "HangulIMS";
+
     static final boolean DEBUG = false;
 
     /**
@@ -40,21 +44,23 @@ public class SoftKeyboard extends InputMethodService
     private long mLastShiftTime;
     private long mMetaState;
 
-    private LatinKeyboard mSymbolsKeyboard;
-    private LatinKeyboard mSymbolsShiftedKeyboard;
-    private LatinKeyboard mQwertyKeyboard;
-    private LatinKeyboard mCurKeyboard;
+    private HangulKeyboard mSymbolsKeyboard;
+    private HangulKeyboard mSymbolsShiftedKeyboard;
+    private HangulKeyboard mQwertyKeyboard;
+    private HangulKeyboard mCurKeyboard;
 
     private String mWordSeparators;
 
     @Override
     public void onCreate() {
         super.onCreate();
+        Log.d(TAG,String.format("onCreate"));
         mWordSeparators = getResources().getString(R.string.word_separators);
     }
 
     @Override
     public void onInitializeInterface() {
+        Log.d(TAG,String.format("onInitializeInterface"));
         if (mQwertyKeyboard != null) {
             // Configuration changes can happen after the keyboard gets recreated,
             // so we need to be able to re-build the keyboards if the available
@@ -63,9 +69,9 @@ public class SoftKeyboard extends InputMethodService
             if (displayWidth == mLastDisplayWidth) return;
             mLastDisplayWidth = displayWidth;
         }
-        mQwertyKeyboard = new LatinKeyboard(this, R.xml.qwerty);
-        mSymbolsKeyboard = new LatinKeyboard(this, R.xml.symbols);
-        mSymbolsShiftedKeyboard = new LatinKeyboard(this, R.xml.symbols_shift);
+        mQwertyKeyboard = new HangulKeyboard(this, R.xml.hangul);
+        mSymbolsKeyboard = new HangulKeyboard(this, R.xml.symbols);
+        mSymbolsShiftedKeyboard = new HangulKeyboard(this, R.xml.symbols_shift);
     }
 
     @Override
@@ -407,7 +413,7 @@ public class SoftKeyboard extends InputMethodService
             handleShift();
         } else if (primaryCode == Keyboard.KEYCODE_CANCEL) {
             handleClose();
-        } else if (primaryCode == LatinKeyboardView.KEYCODE_OPTIONS) {
+        } else if (primaryCode == HangulKeyboardView.KEYCODE_OPTIONS) {
             // Show a menu or somethin'
         } else if (primaryCode == Keyboard.KEYCODE_MODE_CHANGE
                 && mInputView != null) {
@@ -566,22 +572,28 @@ public class SoftKeyboard extends InputMethodService
         if (mCompletionOn) {
             pickDefaultCandidate();
         }
+        Log.d(TAG,String.format("swipeRight"));
     }
 
     public void swipeLeft() {
         handleBackspace();
+        Log.d(TAG,String.format("swipeLeft"));
     }
 
     public void swipeDown() {
         handleClose();
+        Log.d(TAG,String.format("swipeDown"));
     }
 
     public void swipeUp() {
+        Log.d(TAG,String.format("swipeUp"));
     }
 
     public void onPress(int primaryCode) {
+        Log.d(TAG,String.format("onPress : %d", primaryCode));
     }
 
     public void onRelease(int primaryCode) {
+        Log.d(TAG,String.format("onRelease : %d", primaryCode));
     }
 }

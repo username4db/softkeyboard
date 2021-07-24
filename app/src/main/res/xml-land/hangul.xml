@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
+    android:keyHeight="@dimen/key_height"
+    android:keyWidth="6%p"
+    android:horizontalGap="0px"
+    android:verticalGap="0px"
+    >
+
+    <Row>
+        <Key android:codes="113" android:keyLabel="ㅂ" android:keyEdgeFlags="left"/>
+        <Key android:codes="119" android:keyLabel="ㅃ"/>
+        <Key android:codes="101" android:keyLabel="ㄷ"/>
+        <Key android:codes="114" android:keyLabel="ㄸ"/>
+        <Key android:codes="116" android:keyLabel="ㄱ"/>
+        <Key android:codes="121" android:keyLabel="ㄲ"/>
+        <Key android:codes="117" android:keyLabel="ㅈ"/>
+        <Key android:codes="112" android:keyLabel="ㅉ"/>
+        <Key android:codes="112" android:keyLabel=" "/>
+        <Key android:codes="112" android:keyLabel=" "/>
+        <Key android:codes="112" android:keyLabel="ㅜ"/>
+        <Key android:codes="112" android:keyLabel="ㅝ"/>
+        <Key android:codes="112" android:keyLabel=" "/>
+        <Key android:codes="112" android:keyLabel=" "/>
+        <Key android:codes="112" android:keyLabel="ㅟ"/>
+        <Key android:codes="112" android:keyLabel="ㅞ" android:keyEdgeFlags="right"/>
+    </Row>
+
+    <Row>
+        <Key android:codes="113" android:keyLabel="ㅍ" android:keyEdgeFlags="left"/>
+        <Key android:codes="119" android:keyLabel=" "/>
+        <Key android:codes="101" android:keyLabel="ㅌ"/>
+        <Key android:codes="114" android:keyLabel=" "/>
+        <Key android:codes="116" android:keyLabel="ㅋ"/>
+        <Key android:codes="121" android:keyLabel=" "/>
+        <Key android:codes="117" android:keyLabel="ㅊ"/>
+        <Key android:codes="112" android:keyLabel=" "/>
+        <Key android:codes="112" android:keyLabel=" "/>
+        <Key android:codes="112" android:keyLabel="ㅏ"/>
+        <Key android:codes="112" android:keyLabel="ㅡ"/>
+        <Key android:codes="112" android:keyLabel="ㅓ"/>
+        <Key android:codes="112" android:keyLabel="ㅣ"/>
+        <Key android:codes="112" android:keyLabel="ㅐ"/>
+        <Key android:codes="112" android:keyLabel="ㅢ"/>
+        <Key android:codes="112" android:keyLabel="ㅔ" android:keyEdgeFlags="right"/>
+
+
+    </Row>
+
+    <Row>
+        <Key android:codes="113" android:keyLabel="ㅁ" android:keyEdgeFlags="left"/>
+        <Key android:codes="119" android:keyLabel=" "/>
+        <Key android:codes="101" android:keyLabel="ㄴ"/>
+        <Key android:codes="114" android:keyLabel=" "/>
+        <Key android:codes="116" android:keyLabel="ㅎ"/>
+        <Key android:codes="121" android:keyLabel=" "/>
+        <Key android:codes="117" android:keyLabel="ㅅ"/>
+        <Key android:codes="112" android:keyLabel="ㅆ"/>
+        <Key android:codes="112" android:keyLabel=" "/>
+        <Key android:codes="112" android:keyLabel="ㅘ"/>
+        <Key android:codes="112" android:keyLabel="ㅗ"/>
+        <Key android:codes="112" android:keyLabel=" "/>
+        <Key android:codes="112" android:keyLabel=" "/>
+        <Key android:codes="112" android:keyLabel="ㅙ"/>
+        <Key android:codes="112" android:keyLabel="ㅚ"/>
+        <Key android:codes="112" android:keyLabel=" " android:keyEdgeFlags="right"/>
+
+
+
+    </Row>
+
+    <Row>
+        <Key android:codes="113" android:keyLabel=" " android:keyEdgeFlags="left"/>
+        <Key android:codes="119" android:keyLabel=" "/>
+        <Key android:codes="101" android:keyLabel="ㄹ"/>
+        <Key android:codes="114" android:keyLabel=" "/>
+        <Key android:codes="116" android:keyLabel=" "/>
+        <Key android:codes="121" android:keyLabel=" "/>
+        <Key android:codes="117" android:keyLabel="ㅇ"/>
+        <Key android:codes="112" android:keyLabel=" "/>
+        <Key android:codes="112" android:keyLabel=" "/>
+        <Key android:codes="112" android:keyLabel=" "/>
+        <Key android:codes="112" android:keyLabel="ㅠ"/>
+        <Key android:codes="112" android:keyLabel=" "/>
+        <Key android:codes="112" android:keyLabel=" "/>
+        <Key android:codes="112" android:keyLabel=" "/>
+        <Key android:codes="112" android:keyLabel=" "/>
+        <Key android:codes="112" android:keyLabel=" " android:keyEdgeFlags="right"/>
+    </Row>
+
+    <Row>
+        <Key android:codes="113" android:keyLabel=" " android:keyEdgeFlags="left"/>
+        <Key android:codes="119" android:keyLabel=" "/>
+        <Key android:codes="101" android:keyLabel=" "/>
+        <Key android:codes="114" android:keyLabel=" "/>
+        <Key android:codes="116" android:keyLabel=" "/>
+        <Key android:codes="121" android:keyLabel=" "/>
+        <Key android:codes="117" android:keyLabel=" "/>
+        <Key android:codes="112" android:keyLabel=" "/>
+        <Key android:codes="112" android:keyLabel=" "/>
+        <Key android:codes="112" android:keyLabel="ㅑ"/>
+        <Key android:codes="112" android:keyLabel=" "/>
+        <Key android:codes="112" android:keyLabel="ㅕ"/>
+        <Key android:codes="112" android:keyLabel=" "/>
+        <Key android:codes="112" android:keyLabel="ㅒ"/>
+        <Key android:codes="112" android:keyLabel=" "/>
+        <Key android:codes="112" android:keyLabel="ㅖ" android:keyEdgeFlags="right"/>
+    </Row>
+
+    <Row android:rowEdgeFlags="bottom">
+        <Key android:codes="113" android:keyLabel=" " android:keyEdgeFlags="left"/>
+        <Key android:codes="119" android:keyLabel=" "/>
+        <Key android:codes="101" android:keyLabel=" "/>
+        <Key android:codes="114" android:keyLabel=" "/>
+        <Key android:codes="116" android:keyLabel=" "/>
+        <Key android:codes="121" android:keyLabel=" "/>
+        <Key android:codes="117" android:keyLabel=" "/>
+        <Key android:codes="112" android:keyLabel=" "/>
+        <Key android:codes="112" android:keyLabel=" "/>
+        <Key android:codes="112" android:keyLabel=" " />
+        <Key android:codes="112" android:keyLabel="ㅛ"/>
+        <Key android:codes="112" android:keyLabel=" "/>
+        <Key android:codes="112" android:keyLabel=" "/>
+        <Key android:codes="112" android:keyLabel=" "/>
+        <Key android:codes="112" android:keyLabel=" "/>
+        <Key android:codes="112" android:keyLabel=" " android:keyEdgeFlags="right"/>
+    </Row>
+</Keyboard>

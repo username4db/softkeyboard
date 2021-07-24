@@ -1,23 +1,21 @@
-package com.example.android.softkeyboard;
+package com.hangul.learning.keyboard;
 
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.XmlResourceParser;
 import android.inputmethodservice.Keyboard;
-import android.inputmethodservice.Keyboard.Key;
-import android.inputmethodservice.Keyboard.Row;
 import android.view.inputmethod.EditorInfo;
 
-public class LatinKeyboard extends Keyboard {
+public class HangulKeyboard extends Keyboard {
 
     private Key mEnterKey;
 
-    public LatinKeyboard(Context context, int xmlLayoutResId) {
+    public HangulKeyboard(Context context, int xmlLayoutResId) {
         super(context, xmlLayoutResId);
     }
 
-    public LatinKeyboard(Context context, int layoutTemplateResId,
-                         CharSequence characters, int columns, int horizontalPadding) {
+    public HangulKeyboard(Context context, int layoutTemplateResId,
+                          CharSequence characters, int columns, int horizontalPadding) {
         super(context, layoutTemplateResId, characters, columns, horizontalPadding);
     }
 

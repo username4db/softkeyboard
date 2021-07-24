@@ -1,4 +1,4 @@
-package com.example.android.softkeyboard;
+package com.hangul.learning.keyboard;
 
 import org.junit.Test;
 

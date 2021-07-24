@@ -1,4 +1,4 @@
-package com.example.android.softkeyboard;
+package com.hangul.learning.keyboard;
 
 import android.content.Context;
 import android.inputmethodservice.Keyboard;
@@ -6,15 +6,15 @@ import android.inputmethodservice.KeyboardView;
 import android.inputmethodservice.Keyboard.Key;
 import android.util.AttributeSet;
 
-public class LatinKeyboardView extends KeyboardView {
+public class HangulKeyboardView extends KeyboardView {
 
     static final int KEYCODE_OPTIONS = -100;
 
-    public LatinKeyboardView(Context context, AttributeSet attrs) {
+    public HangulKeyboardView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public LatinKeyboardView(Context context, AttributeSet attrs, int defStyle) {
+    public HangulKeyboardView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
     }
 

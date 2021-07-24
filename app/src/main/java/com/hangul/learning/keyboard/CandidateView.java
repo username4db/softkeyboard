@@ -1,4 +1,4 @@
-package com.example.android.softkeyboard;
+package com.hangul.learning.keyboard;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -17,7 +17,7 @@ public class CandidateView extends View {
 
     private static final int OUT_OF_BOUNDS = -1;
 
-    private SoftKeyboard mService;
+    private HangulIMS mService;
     private List<String> mSuggestions;
     private int mSelectedIndex;
     private int mTouchX = OUT_OF_BOUNDS;
@@ -108,7 +108,7 @@ public class CandidateView extends View {
      * A connection back to the service to communicate with the text field
      * @param listener
      */
-    public void setService(SoftKeyboard listener) {
+    public void setService(HangulIMS listener) {
         mService = listener;
     }
 

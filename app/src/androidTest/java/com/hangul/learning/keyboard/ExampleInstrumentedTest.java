@@ -1,4 +1,4 @@
-package com.example.android.softkeyboard;
+package com.hangul.learning.keyboard;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.example.android.softkeyboard", appContext.getPackageName());
+        assertEquals("com.hangul.softkeyboard.softkeyboard", appContext.getPackageName());
     }
 }

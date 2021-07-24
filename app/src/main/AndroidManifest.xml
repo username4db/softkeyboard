@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.android.softkeyboard">
+    package="com.hangul.learning.keyboard">
 
     <application android:label="@string/ime_name"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher">
-        <service android:name="SoftKeyboard"
+        <service android:name="com.hangul.learning.keyboard.HangulIMS"
             android:permission="android.permission.BIND_INPUT_METHOD">
             <intent-filter>
                 <action android:name="android.view.InputMethod" />
