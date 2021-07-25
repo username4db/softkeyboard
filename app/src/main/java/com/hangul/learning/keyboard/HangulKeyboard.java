@@ -8,6 +8,8 @@ import android.view.inputmethod.EditorInfo;
 
 public class HangulKeyboard extends Keyboard {
 
+    static final String TAG = "HangulKeyboard";
+
     private Key mEnterKey;
 
     public HangulKeyboard(Context context, int xmlLayoutResId) {
@@ -29,16 +31,12 @@ public class HangulKeyboard extends Keyboard {
         return key;
     }
 
-    /**
-     * This looks at the ime options given by the current editor, to set the
-     * appropriate label on the keyboard's enter key (if it has one).
-     */
     void setImeOptions(Resources res, int options) {
         if (mEnterKey == null) {
             return;
         }
 
-        switch (options&(EditorInfo.IME_MASK_ACTION|EditorInfo.IME_FLAG_NO_ENTER_ACTION)) {
+        switch (options & (EditorInfo.IME_MASK_ACTION | EditorInfo.IME_FLAG_NO_ENTER_ACTION)) {
             case EditorInfo.IME_ACTION_GO:
                 mEnterKey.iconPreview = null;
                 mEnterKey.icon = null;

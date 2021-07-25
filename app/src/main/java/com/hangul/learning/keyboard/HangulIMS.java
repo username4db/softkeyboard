@@ -1,5 +1,6 @@
 package com.hangul.learning.keyboard;
 
+import android.content.Intent;
 import android.inputmethodservice.InputMethodService;
 import android.inputmethodservice.Keyboard;
 import android.inputmethodservice.KeyboardView;
@@ -54,13 +55,19 @@ public class HangulIMS extends InputMethodService
     @Override
     public void onCreate() {
         super.onCreate();
-        Log.d(TAG,String.format("onCreate"));
+        Log.d(TAG, String.format("onCreate"));
         mWordSeparators = getResources().getString(R.string.word_separators);
     }
 
     @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        Log.d(TAG, String.format("onStartCommand:%s",intent.getAction()));
+        return super.onStartCommand(intent, flags, startId);
+    }
+
+    @Override
     public void onInitializeInterface() {
-        Log.d(TAG,String.format("onInitializeInterface"));
+        Log.d(TAG, String.format("onInitializeInterface"));
         if (mQwertyKeyboard != null) {
             // Configuration changes can happen after the keyboard gets recreated,
             // so we need to be able to re-build the keyboards if the available
@@ -76,6 +83,7 @@ public class HangulIMS extends InputMethodService
 
     @Override
     public View onCreateInputView() {
+        Log.d(TAG, String.format("onCreateInputView"));
         mInputView = (KeyboardView) getLayoutInflater().inflate(
                 R.layout.input, null);
         mInputView.setOnKeyboardActionListener(this);
@@ -84,6 +92,7 @@ public class HangulIMS extends InputMethodService
     }
 
     public View onCreateCandidatesView() {
+        Log.d(TAG, String.format("onCreateCandidatesView"));
         mCandidateView = new CandidateView(this);
         mCandidateView.setService(this);
         return mCandidateView;
@@ -91,6 +100,7 @@ public class HangulIMS extends InputMethodService
 
     @Override
     public void onStartInput(EditorInfo attribute, boolean restarting) {
+        Log.d(TAG, String.format("onStartInput"));
         super.onStartInput(attribute, restarting);
 
         // Reset our state.  We want to do this even if restarting, because
@@ -179,6 +189,7 @@ public class HangulIMS extends InputMethodService
 
     @Override
     public void onFinishInput() {
+        Log.d(TAG, String.format("onFinishInput"));
         super.onFinishInput();
 
         // Clear current composing text and candidates.
@@ -199,6 +210,7 @@ public class HangulIMS extends InputMethodService
 
     @Override
     public void onStartInputView(EditorInfo attribute, boolean restarting) {
+        Log.d(TAG, String.format("onStartInputView"));
         super.onStartInputView(attribute, restarting);
         // Apply the selected keyboard to the input view.
         mInputView.setKeyboard(mCurKeyboard);
@@ -209,6 +221,7 @@ public class HangulIMS extends InputMethodService
     public void onUpdateSelection(int oldSelStart, int oldSelEnd,
                                   int newSelStart, int newSelEnd,
                                   int candidatesStart, int candidatesEnd) {
+        Log.d(TAG, String.format("onUpdateSelection"));
         super.onUpdateSelection(oldSelStart, oldSelEnd, newSelStart, newSelEnd,
                 candidatesStart, candidatesEnd);
 
@@ -227,6 +240,7 @@ public class HangulIMS extends InputMethodService
 
     @Override
     public void onDisplayCompletions(CompletionInfo[] completions) {
+        Log.d(TAG, String.format("onDisplayCompletions"));
         if (mCompletionOn) {
             mCompletions = completions;
             if (completions == null) {
@@ -243,7 +257,8 @@ public class HangulIMS extends InputMethodService
         }
     }
 
-     private boolean translateKeyDown(int keyCode, KeyEvent event) {
+    private boolean translateKeyDown(int keyCode, KeyEvent event) {
+        Log.d(TAG, String.format("translateKeyDown:0x%08X",keyCode));
         mMetaState = MetaKeyKeyListener.handleKeyDown(mMetaState,
                 keyCode, event);
         int c = event.getUnicodeChar(MetaKeyKeyListener.getMetaState(mMetaState));
@@ -278,6 +293,7 @@ public class HangulIMS extends InputMethodService
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
+        Log.d(TAG, String.format("onKeyDown:0x%08X",keyCode));
         switch (keyCode) {
             case KeyEvent.KEYCODE_BACK:
                 // The InputMethodService already takes care of the back
@@ -342,18 +358,19 @@ public class HangulIMS extends InputMethodService
 
     @Override
     public boolean onKeyUp(int keyCode, KeyEvent event) {
+        Log.d(TAG, String.format("onKeyUp:0x%08X",keyCode));
         if (PROCESS_HARD_KEYS) {
             if (mPredictionOn) {
                 mMetaState = MetaKeyKeyListener.handleKeyUp(mMetaState,
                         keyCode, event);
             }
         }
-
         return super.onKeyUp(keyCode, event);
     }
 
 
     private void commitTyped(InputConnection inputConnection) {
+        Log.d(TAG, String.format("commitTyped"));
         if (mComposing.length() > 0) {
             inputConnection.commitText(mComposing, mComposing.length());
             mComposing.setLength(0);
@@ -374,10 +391,12 @@ public class HangulIMS extends InputMethodService
     }
 
     private boolean isAlphabet(int code) {
+        Log.d(TAG, String.format("isAlphabet:0x%08X", code));
         return Character.isLetter(code);
     }
 
     private void keyDownUp(int keyEventCode) {
+        Log.d(TAG, String.format("onText:0x%08X", keyEventCode));
         getCurrentInputConnection().sendKeyEvent(
                 new KeyEvent(KeyEvent.ACTION_DOWN, keyEventCode));
         getCurrentInputConnection().sendKeyEvent(
@@ -385,6 +404,8 @@ public class HangulIMS extends InputMethodService
     }
 
     private void sendKey(int keyCode) {
+        Log.d(TAG, String.format("onText:0x%08X", keyCode));
+
         switch (keyCode) {
             case '\n':
                 keyDownUp(KeyEvent.KEYCODE_ENTER);
@@ -400,6 +421,8 @@ public class HangulIMS extends InputMethodService
     }
 
     public void onKey(int primaryCode, int[] keyCodes) {
+        Log.d(TAG, String.format("onKey:0x%08X", primaryCode));
+
         if (isWordSeparator(primaryCode)) {
             // Handle separator
             if (mComposing.length() > 0) {
@@ -433,6 +456,8 @@ public class HangulIMS extends InputMethodService
     }
 
     public void onText(CharSequence text) {
+        Log.d(TAG, String.format("onText:%s", text));
+
         InputConnection ic = getCurrentInputConnection();
         if (ic == null) return;
         ic.beginBatchEdit();
@@ -506,6 +531,7 @@ public class HangulIMS extends InputMethodService
     }
 
     private void handleCharacter(int primaryCode, int[] keyCodes) {
+        Log.d(TAG, String.format("handleCharacter:0x%08X", primaryCode));
         if (isInputViewShown()) {
             if (mInputView.isShifted()) {
                 primaryCode = Character.toUpperCase(primaryCode);
@@ -523,12 +549,14 @@ public class HangulIMS extends InputMethodService
     }
 
     private void handleClose() {
+        Log.d(TAG, String.format("handleClose"));
         commitTyped(getCurrentInputConnection());
         requestHideSelf(0);
         mInputView.closing();
     }
 
     private void checkToggleCapsLock() {
+        Log.d(TAG, String.format("checkToggleCapsLock"));
         long now = System.currentTimeMillis();
         if (mLastShiftTime + 800 > now) {
             mCapsLock = !mCapsLock;
@@ -539,19 +567,23 @@ public class HangulIMS extends InputMethodService
     }
 
     private String getWordSeparators() {
+        Log.d(TAG, String.format("getWordSeparators"));
         return mWordSeparators;
     }
 
     public boolean isWordSeparator(int code) {
+        Log.d(TAG, String.format("isWordSeparator:0x%08X", code));
         String separators = getWordSeparators();
         return separators.contains(String.valueOf((char) code));
     }
 
     public void pickDefaultCandidate() {
+        Log.d(TAG, String.format("pickDefaultCandidate"));
         pickSuggestionManually(0);
     }
 
     public void pickSuggestionManually(int index) {
+        Log.d(TAG, String.format("pickSuggestionManually:%d", index));
         if (mCompletionOn && mCompletions != null && index >= 0
                 && index < mCompletions.length) {
             CompletionInfo ci = mCompletions[index];
@@ -569,31 +601,31 @@ public class HangulIMS extends InputMethodService
     }
 
     public void swipeRight() {
+        Log.d(TAG, String.format("swipeRight"));
         if (mCompletionOn) {
             pickDefaultCandidate();
         }
-        Log.d(TAG,String.format("swipeRight"));
     }
 
     public void swipeLeft() {
+        Log.d(TAG, String.format("swipeLeft"));
         handleBackspace();
-        Log.d(TAG,String.format("swipeLeft"));
     }
 
     public void swipeDown() {
+        Log.d(TAG, String.format("swipeDown"));
         handleClose();
-        Log.d(TAG,String.format("swipeDown"));
     }
 
     public void swipeUp() {
-        Log.d(TAG,String.format("swipeUp"));
+        Log.d(TAG, String.format("swipeUp"));
     }
 
     public void onPress(int primaryCode) {
-        Log.d(TAG,String.format("onPress : %d", primaryCode));
+        Log.d(TAG, String.format("onPress:0x%08X", primaryCode));
     }
 
     public void onRelease(int primaryCode) {
-        Log.d(TAG,String.format("onRelease : %d", primaryCode));
-    }
+        Log.d(TAG, String.format("onRelease:0x%08X", primaryCode));
+   }
 }

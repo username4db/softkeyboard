@@ -5,7 +5,7 @@
     <application android:label="@string/ime_name"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher">
-        <service android:name="com.hangul.learning.keyboard.HangulIMS"
+        <service android:name=".HangulIMS"
             android:permission="android.permission.BIND_INPUT_METHOD">
             <intent-filter>
                 <action android:name="android.view.InputMethod" />

@@ -8,6 +8,8 @@ import android.util.AttributeSet;
 
 public class HangulKeyboardView extends KeyboardView {
 
+    static final String TAG = "HangulKeyboardView";
+
     static final int KEYCODE_OPTIONS = -100;
 
     public HangulKeyboardView(Context context, AttributeSet attrs) {

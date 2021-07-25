@@ -122,6 +122,6 @@
         <Key android:codes="112" android:keyLabel=" "/>
         <Key android:codes="112" android:keyLabel=" "/>
         <Key android:codes="112" android:keyLabel=" "/>
-        <Key android:codes="112" android:keyLabel=" " android:keyEdgeFlags="right"/>
+        <Key android:codes="10" android:keyLabel="Enter" android:keyEdgeFlags="right"/>
     </Row>
 </Keyboard>
